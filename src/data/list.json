@@ -2,23 +2,23 @@
 	"data": [
 		{
 			"id": 0,
-			"title": "заголовок 1",
+			"title": "заголовок",
 			"description": "описание 1",
 			"published": true,
 			"published_from": "2019-10-01"
 		},
 		{
 			"id": 1,
-			"title": "заголовок 2",
+			"title": "второй заголовок",
 			"description": "описание 2",
 			"published": true,
 			"published_from": "2019-10-02"
 		},
 		{
 			"id": 2,
-			"title": "заголовок 3",
+			"title": "название",
 			"description": "описание 3",
-			"published": true,
+			"published": false,
 			"published_from": "2019-10-03"
 		}
 	]

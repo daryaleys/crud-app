@@ -1,65 +1,51 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
-import { ItemType } from '../types/ItemType';
-import SingleItem from '../components/single-item/SingleItem.vue';
-
+import { computed, onMounted, Ref, ref, watch } from "vue";
+import { ItemType } from "../types/ItemType";
 import list from "../data/list.json?url";
+import ItemsList from "../components/item-list/ItemsList.vue";
 
 const items: Ref<ItemType[]> = ref([]);
 
-let itemsLoading: Ref<boolean> = ref(false);
-let errorLoading: Ref<boolean> = ref(false);
+let itemsLoading = ref(false);
+let errorLoading = ref(false);
 
 const fetchItems = (): void => {
     itemsLoading.value = true;
-    // запрос на получение списка постов
+    // запрос на получение списка сущностей
     fetch(list)
         .then((response) => response.json())
         .then((data) => {
             items.value = data.data;
         })
-        .catch(() => errorLoading.value = true)
-        .finally(() => itemsLoading.value = false);
-}
+        .catch(() => (errorLoading.value = true))
+        .finally(() => (itemsLoading.value = false));
+};
+
+const deleteItem = (id: number): void => {
+    items.value = items.value.filter((item: ItemType) => item.id !== id);
+};
+
+let searchValue = ref("");
+const filteredItems = computed(() => {
+    return items.value.filter((item: ItemType) => item.title.toLowerCase().includes(searchValue.value.toLowerCase()));
+})
 
 onMounted(() => {
     fetchItems();
-})
+});
 </script>
 
 <template>
-    <div class="wrap">
-        <RouterLink to="/create">Создать сущность</RouterLink>
+    <div class="flex flex-col gap-4 items-start">
+        <RouterLink to="/create" class="bg-blue-500 rounded-md px-6 py-2">Создать сущность</RouterLink>
 
-        <h1 v-if="itemsLoading">Загрузка...</h1>
-        <h1 v-if="errorLoading">Не удалось загрузить информацию. Пожалуйста, попробуйте позже</h1>
+        <input type="text" placeholder="Поиск по заголовку" class="input input-bordered w-full max-w-xs border border-blue-400 rounded-md p-2" v-model="searchValue">
 
-        <ul v-if="items.length" class="items-list">
-            <SingleItem v-for="item in items" :key="item.id" v-bind="item" />
-        </ul>
-        <h1 v-else>Ещё нет ни одного поста</h1>
+        <h2 v-if="itemsLoading">Загрузка...</h2>
+        <h2 v-else-if="errorLoading">Не удалось загрузить информацию. Пожалуйста, попробуйте позже</h2>
+        <ItemsList v-else :items="filteredItems" @deleteItem="deleteItem" />
     </div>
-
 </template>
 
 <style scoped>
-.wrap {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.item {
-    &:not(:last-child) {
-        padding-bottom: 10px;
-        border-bottom: 1px solid #000;
-    }
-}
 </style>

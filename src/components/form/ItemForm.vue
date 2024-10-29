@@ -4,14 +4,10 @@ const props = defineProps<{
     oldDescription?: string
 }>()
 
-console.log(props)
-
 const inputValues = {
-    title: props.oldTitle || "",
-    description: props.oldDescription || ""
+    title: props.oldTitle ?? "",
+    description: props.oldDescription ?? ""
 }
-
-console.log(inputValues)
 
 const submit = () => {
     console.log(inputValues)
