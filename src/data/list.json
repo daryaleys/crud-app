@@ -1,0 +1,25 @@
+{
+	"data": [
+		{
+			"id": 0,
+			"title": "заголовок 1",
+			"description": "описание 1",
+			"published": true,
+			"published_from": "2019-10-01"
+		},
+		{
+			"id": 1,
+			"title": "заголовок 2",
+			"description": "описание 2",
+			"published": true,
+			"published_from": "2019-10-02"
+		},
+		{
+			"id": 2,
+			"title": "заголовок 3",
+			"description": "описание 3",
+			"published": true,
+			"published_from": "2019-10-03"
+		}
+	]
+}
