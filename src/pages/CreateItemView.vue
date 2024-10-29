@@ -1,9 +1,9 @@
 <script setup lang="ts">
-console.log("createS")
+import ItemForm from '../components/form/ItemForm.vue';
 </script>
 
 <template>
-    <h1>Click to create</h1>
+    <ItemForm />
 </template>
 
 <style scoped></style>

@@ -8,6 +8,10 @@ const props = defineProps<{
 }>()
 
 const route = "/update/" + props.id;
+
+const confirm = () => {
+    // открытие модалки
+}
 </script>
 
 <template>
@@ -16,7 +20,10 @@ const route = "/update/" + props.id;
         <span class="title">{{ title }}</span>
         <span class="description">{{ description }}</span>
 
-        <RouterLink :to="route">Редактировать</RouterLink>
+        <div class="btns">
+            <RouterLink :to="route">Редактировать</RouterLink>
+            <button @click="confirm">Удалить</button>
+        </div>
     </div>
 </template>
 
