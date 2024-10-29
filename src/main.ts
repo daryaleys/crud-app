@@ -2,19 +2,19 @@ import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import "./style.css";
 import App from "./App.vue";
-import HomeView from "./pages/HomeView.vue";
-import CreateItemView from "./pages/CreateItemView.vue";
-import UpdateItemView from "./pages/UpdateItemView.vue";
+import HomePage from "./pages/HomePage.vue";
+import CreateItemPage from "./pages/CreateItemPage.vue";
+import UpdateItemPage from "./pages/UpdateItemPage.vue";
 
 const routes = [
-	{ path: "/", component: HomeView },
-	{ path: "/create", component: CreateItemView },
-	{ path: "/update/:id", component: UpdateItemView },
+    { path: "/", name: "home", component: HomePage },
+    { path: "/create", name: "create", component: CreateItemPage },
+    { path: "/update/:id", name: "update", component: UpdateItemPage },
 ];
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes,
+    history: createWebHistory(),
+    routes,
 });
 
 createApp(App).use(router).mount("#app");

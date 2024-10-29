@@ -9,7 +9,7 @@ const items: Ref<ItemType[]> = ref([]);
 let itemsLoading = ref(false);
 let errorLoading = ref(false);
 
-const fetchItems = (): void => {
+const getItems = (): void => {
     itemsLoading.value = true;
     // запрос на получение списка сущностей
     fetch(list)
@@ -31,7 +31,7 @@ const filteredItems = computed(() => {
 })
 
 onMounted(() => {
-    fetchItems();
+    getItems();
 });
 </script>
 

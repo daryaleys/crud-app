@@ -10,11 +10,9 @@ const itemId = route.params.id;
 
 let currentItem: Ref<ItemType | null> = ref(null);
 
-const fetchItem = () => {
+const getItem = () => {
     // запрос информации о текущей сущности по id
-    // const url = `/api/getItem/${itemId}`;
-    // fetch(url).then(...)
-    // в итоге получаем необходимый объект, например:
+    // в итоге получаем, например:
     currentItem.value = {
         id: 0,
         title: "заголовок 1",
@@ -25,7 +23,7 @@ const fetchItem = () => {
 };
 
 onMounted(() => {
-    fetchItem();
+    getItem();
 });
 </script>
 
