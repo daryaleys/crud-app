@@ -3,5 +3,5 @@ export type ItemType = {
 	title: string; // строка, не более 50 символов
 	description: string; // markdown произвольного размера
 	published: boolean; // обязательное поле
-	published_from: string; // nullable дата
+	published_from: string | null; // nullable дата
 };

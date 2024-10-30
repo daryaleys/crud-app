@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onDeactivated, onMounted, ref } from "vue";
-import { onClickOutside } from '@vueuse/core'
 
 const emit = defineEmits(["close"]);
 
@@ -14,19 +13,12 @@ onMounted(() => {
 onDeactivated(() => {
     window.removeEventListener("keydown", keyUpHandler);
 });
-
-// close on click outside
-const target = ref(null)
-onClickOutside(target, () => emit("close"))
 </script>
 
 <template>
-    <div>
-        <div class="modal">
-            <div class="modal-content" ref="target">
-                <label class="btn btn-sm btn-circle absolute right-2 top-2" @click="$emit('close')">✕</label>
-                <slot />
-            </div>
+    <div class="modal" @click.self="$emit('close')">
+        <div class="modal-content">
+            <slot />
         </div>
     </div>
 </template>
