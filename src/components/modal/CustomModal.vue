@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onDeactivated, onMounted, ref } from "vue";
+import { onDeactivated, onMounted } from "vue";
 
 const emit = defineEmits(["close"]);
 

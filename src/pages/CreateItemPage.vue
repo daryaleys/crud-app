@@ -4,7 +4,8 @@ import ItemForm from '../components/form/ItemForm.vue';
 
 const router = useRouter();
 
-const createItem = (inputValues: { title: string; description: string; published: boolean }) => {
+const createItem = () => {
+    // функция должна принимать inputValues: { title: string; description: string; published: boolean }
     // запрос на создание новой сущности (POST), в теле запроса inputValues
     // после успешного создания переходим на страницу со списком сущностей, 
     // где при монтировании компонента будет запрошен актуальный список

@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { ref, Ref } from "vue";
 import { ItemType } from "../types/ItemType";
 import { onMounted } from "vue";
 import ItemForm from "../components/form/ItemForm.vue";
 
+const router = useRouter();
 
-const route = useRoute(), router = useRouter();
-const itemId = route.params.id;
+// const route = useRoute();
+// const itemId = route.params.id;
 
 let currentItem: Ref<ItemType | null> = ref(null);
 
@@ -23,7 +24,8 @@ const getItem = () => {
     };
 };
 
-const updateItem = (inputValues: { title: string; description: string; published: boolean }) => {
+const updateItem = () => {
+    // функция должна принимать inputValues: { title: string; description: string; published: boolean }
     // запрос на редактировние сущности (PUT), в теле запроса inputValues
     // после успешного создания переходимуем на страниц у сосписком сущностей, 
     // где при монтировании компонента будет запрошен список с актуальной информацией

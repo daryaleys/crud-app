@@ -4,7 +4,7 @@ import CustomModal from '../modal/CustomModal.vue';
 
 const emit = defineEmits(['deleteItem'])
 
-const props = defineProps<{
+defineProps<{
     id: number
     title: string
     description: string
@@ -15,9 +15,8 @@ const props = defineProps<{
 let modalOpen: Ref<boolean> = ref(false);
 
 const deleteItem = (): void => {
-    const currentPostId = props.id;
-
-    // запрос на удаление (метод DELETE), 
+    // const itemId = props.id;
+    // запрос на удаление по itemId (метод DELETE), 
     // при успешном запросе закрываем модалку и обновляем список
     modalOpen.value = false;
     emit('deleteItem');
