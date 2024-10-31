@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onDeactivated, onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 const emit = defineEmits(["close"]);
 
@@ -10,7 +10,7 @@ const keyUpHandler = (e: KeyboardEvent) => {
 onMounted(() => {
     window.addEventListener("keydown", keyUpHandler);
 });
-onDeactivated(() => {
+onUnmounted(() => {
     window.removeEventListener("keydown", keyUpHandler);
 });
 </script>
